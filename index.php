@@ -36,6 +36,22 @@
  * @filesource
  */
 
+ /*
+	*--------------------------------------------------------------
+	* CUSTOM STARTER CODE
+	*--------------------------------------------------------------
+	*/
+
+	// Path dari backend folder, sesuaikan konstanta ini jika memindahkan file ini (index.php)
+	define('BACKPATH', __DIR__);
+
+	// Load composer disini karena fungsi-fungsinya nya akan digunakan sejak awal
+	require_once(BACKPATH . '/vendor/autoload.php');
+
+	// Load dotenv ke $_SERVER
+	Dotenv\Dotenv::createMutable(BACKPATH)->load();
+
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
