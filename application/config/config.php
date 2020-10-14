@@ -23,7 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+function isSecure() {
+	// blok pertama dibawah ini, berisi nilai dari .env apabila di .env diisi
+	if(!empty($_SERVER['eHTTPS']))
+		if($_SERVER['eHTTPS'] == 'true') return true;
+		else return false;
+
+	if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')) return true;
+	if($_SERVER['SERVER_PORT'] == 443) return true;
+	if($_SERVER['REQUEST_SCHEME'] == 'https') return true;
+	return false;
+}
+$config['base_url'] = isSecure() ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
 
 /*
 |--------------------------------------------------------------------------
