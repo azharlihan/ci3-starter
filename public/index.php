@@ -42,14 +42,19 @@
 	*--------------------------------------------------------------
 	*/
 
-	// Path dari backend folder, sesuaikan konstanta ini jika memindahkan file ini (index.php)
-	define('BACKPATH', '../../pl_ci3starter');
+// Path dari backend folder, sesuaikan konstanta ini jika memindahkan file ini (index.php)
+define('BACKPATH', '..');
 
-	// Load composer disini karena fungsi-fungsinya nya akan digunakan sejak awal
-	require_once(BACKPATH . '/vendor/autoload.php');
+// Load composer disini karena fungsi-fungsinya nya akan digunakan sejak awal
+if (!file_exists(BACKPATH. '/vendor/autoload.php'))
+{
+	echo 'Your backpath folder path does not appear to be set correctly. Please open the following file and correct this: ' . pathinfo(__FILE__, PATHINFO_BASENAME);
+	exit();
+}
+require_once(BACKPATH . '/vendor/autoload.php');
 
-	// Load dotenv ke $_SERVER
-	Dotenv\Dotenv::createMutable(BACKPATH)->load();
+// Load dotenv ke $_SERVER
+Dotenv\Dotenv::createMutable(BACKPATH)->load();
 
 
 /*
