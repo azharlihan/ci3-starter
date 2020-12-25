@@ -1,8 +1,5 @@
 <?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
-
-namespace libraries;
+namespace App\Libraries;
 
 /**
  * Format class
